@@ -58,6 +58,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <forkCount>0</forkCount>
                     <includes>
                         <include>**/*IT.java</include>
                         <include>**/*Test.java</include>

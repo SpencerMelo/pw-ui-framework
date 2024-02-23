@@ -1,5 +1,7 @@
 # Web UI e2e repository using Playwright
 
+[![Run tests](https://github.com/SpencerMelo/pw-ui-framework/actions/workflows/maven.yml/badge.svg)](https://github.com/SpencerMelo/pw-ui-framework/actions/workflows/maven.yml)
+
 ## Minimum Requirements
 
 - Java 21

@@ -19,7 +19,7 @@
 #### Command example 
 
 ```shell
-mvn clean test -Dheadless=false -Dbrowser=chrome -Dscreenshoot=true
+mvn clean test -Dheadless=false -Dbrowser=chrome -Dscreenshot=true
 ```
 
 ## Notes

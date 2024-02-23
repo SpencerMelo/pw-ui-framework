@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <!--INFO-->
+        <Console name="info" target="SYSTEM_OUT">
+            <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>[%p] %m%n</pattern>
+            </PatternLayout>
+        </Console>
+        <!--WARN and above-->
+        <Console name="stderr" target="SYSTEM_OUT">
+            <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>[%p] (%F:%L) %m%n</pattern>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="info"/>
+            <AppenderRef ref="stderr"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -58,6 +58,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory"/>
                     <includes>
                         <include>**/*IT.java</include>
                         <include>**/*Test.java</include>

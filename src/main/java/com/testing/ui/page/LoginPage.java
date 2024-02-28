@@ -23,6 +23,10 @@ public class LoginPage {
         return this;
     }
 
+    public Locator getUsernameInput() {
+        return this.usernameInput;
+    }
+
     public LoginPage clickUsernameInput() {
         usernameInput.click();
         return this;

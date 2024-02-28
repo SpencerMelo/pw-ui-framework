@@ -6,8 +6,8 @@ import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 
 public class LifecycleExtension implements BeforeEachCallback, AfterEachCallback {
     Playwright playwright;
@@ -41,9 +41,12 @@ public class LifecycleExtension implements BeforeEachCallback, AfterEachCallback
 
     private void takeScreenshot(Page page, String testName) {
         String screenshot = System.getProperty("screenshot");
+        String browser = System.getProperty("browser");
+
         if (Boolean.parseBoolean(screenshot)) {
-            Path screenshotPath = Paths.get(testName + "_" + page.hashCode() + ".png");
-            page.screenshot(new Page.ScreenshotOptions().setPath(screenshotPath));
+            String path = testName + "_" + browser + "_" + LocalDateTime.now().withNano(0) + ".png";
+            path = path.replaceAll("[:\\-]", "");
+            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(path)));
         }
     }
 }

@@ -4,57 +4,72 @@ import com.testing.ui.page.LoginPage;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 @Tag("login")
 public class LoginTest extends BaseTest {
 
     @Test
     void userShouldBeAbleToLoginWithValidCredentials() {
-        new LoginPage(page)
+        LoginPage loginPage = new LoginPage(page);
+        loginPage
                 .navigate()
                 .clickUsernameInput()
                 .inputUsername("standard_user")
                 .clickPasswordInput()
                 .inputPassword("secret_sauce")
                 .clickLoginButton();
+
+        assertThat(loginPage.getUsernameInput()).isHidden();
     }
 
     @Test
     void userShouldNotBeAbleToLoginWithInvalidPassword() {
-        new LoginPage(page)
+        LoginPage loginPage = new LoginPage(page);
+        loginPage
                 .navigate()
                 .clickUsernameInput()
                 .inputUsername("standard_user")
                 .clickPasswordInput()
                 .inputPassword("invalid")
                 .clickLoginButton();
+
+        assertThat(loginPage.getUsernameInput()).isVisible();
     }
 
     @Test
     void userShouldNotBeAbleToLoginWithInvalidEmail() {
-        new LoginPage(page)
+        LoginPage loginPage = new LoginPage(page);
+        loginPage
                 .navigate()
                 .clickUsernameInput()
                 .inputUsername("invalid")
                 .clickPasswordInput()
                 .inputPassword("secret_sauce")
                 .clickLoginButton();
+
+        assertThat(loginPage.getUsernameInput()).isVisible();
     }
 
     @Test
     void userShouldNotBeAbleToLoginWithInvalidEmailAndPassword() {
-        new LoginPage(page)
+        LoginPage loginPage = new LoginPage(page);
+        loginPage
                 .navigate()
                 .clickUsernameInput()
                 .inputUsername("invalid")
                 .clickPasswordInput()
                 .inputPassword("invalid")
                 .clickLoginButton();
+
+        assertThat(loginPage.getUsernameInput()).isVisible();
     }
 
     @Test
     void userShouldNotBeAbleToLoginWithBlankCredentials() {
-        new LoginPage(page)
-                .navigate()
-                .clickLoginButton();
+        LoginPage loginPage = new LoginPage(page);
+        loginPage.navigate().clickLoginButton();
+
+        assertThat(loginPage.getUsernameInput()).isVisible();
     }
 }

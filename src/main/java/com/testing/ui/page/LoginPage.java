@@ -24,6 +24,11 @@ public class LoginPage {
         return this;
     }
 
+    public LoginPage waitLoading() {
+        page.waitForURL("./");
+        return this;
+    }
+
     public Locator getUsernameInput() {
         return this.usernameInput;
     }

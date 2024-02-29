@@ -1,5 +1,6 @@
 package com.testing.ui.test;
 
+import com.testing.ui.page.HomePage;
 import com.testing.ui.page.LoginPage;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 public class LoginTest extends BaseTest {
 
     @Test
-    void userShouldBeAbleToLoginWithValidCredentials() {
+    void userShouldBeAbleToLoginAndLogoutWithValidCredentials() {
         LoginPage loginPage = new LoginPage(page);
         loginPage
                 .navigate()
@@ -20,7 +21,11 @@ public class LoginTest extends BaseTest {
                 .inputPassword("secret_sauce")
                 .clickLoginButton();
 
-        assertThat(loginPage.getUsernameInput()).isHidden();
+        HomePage homePage = new HomePage(page);
+        homePage.clickBurgerMenu().clickLogoutButton();
+
+        assertThat(loginPage.getUsernameInput()).isVisible();
+        assertThat(homePage.getBurgerMenu()).isHidden();
     }
 
     @Test

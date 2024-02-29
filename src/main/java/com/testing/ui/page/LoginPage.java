@@ -14,8 +14,8 @@ public class LoginPage {
 
     public LoginPage(Page page) {
         this.page = page;
-        this.usernameInput = page.locator("#user-name");
-        this.passwordInput = page.locator("#password");
+        this.usernameInput = page.getByTestId("username");
+        this.passwordInput = page.getByTestId("password");
         this.loginButton = page.locator("#login-button");
     }
 

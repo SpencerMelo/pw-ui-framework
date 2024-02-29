@@ -21,6 +21,7 @@ public class LifecycleExtension implements BeforeEachCallback, AfterEachCallback
     @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
         playwright = Playwright.create();
+        playwright.selectors().setTestIdAttribute("data-test");
         browser = BrowserFactory.getBrowser(playwright);
         browserContext = browser.newContext();
     }

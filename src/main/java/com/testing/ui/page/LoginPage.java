@@ -2,6 +2,7 @@ package com.testing.ui.page;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.testing.ui.utils.ActionHistory;
 
 public class LoginPage {
     private static final String PAGE_URL = "https://www.saucedemo.com/";
@@ -38,16 +39,19 @@ public class LoginPage {
     }
 
     public LoginPage clickLoginButton() {
+        ActionHistory.addAction("click on the 'Login' button");
         loginButton.click();
         return this;
     }
 
     public LoginPage inputUsername(String username) {
+        ActionHistory.addAction("input '" + username + "' on the 'Username' field");
         usernameInput.fill(username);
         return this;
     }
 
     public LoginPage inputPassword(String password) {
+        ActionHistory.addAction("input '" + password + "' on the 'Password' field");
         passwordInput.fill(password);
         return this;
     }

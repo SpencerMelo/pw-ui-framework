@@ -18,10 +18,15 @@
 -Dscreenshot=true|false
 ```
 
-#### Command example 
+#### Basic command 
 
 ```shell
 mvn clean test -Dheadless=false -Dbrowser=chrome -Dscreenshot=true
+```
+
+#### Debug command (windows)
+```shell
+$env:PLAYWRIGHT_JAVA_SRC="src/main/java";$env:PWDEBUG=1;
 ```
 
 ## Notes
